@@ -30,6 +30,29 @@ test('Create employee', async ({ page }) => {
 await employeePage.createEmployee(firstName, lastName);
 
     await employeePage.verifySuccessMessage();
+    const cookies = await page.context().cookies();
+
+const cookieHeader = cookies
+    .map(cookie => `${cookie.name}=${cookie.value}`)
+    .join('; ');
+
+const apiResponse = await page.context().request.get(
+    `${process.env.ORANGEHRM_BASE_URL}/web/index.php/api/v2/pim/employees`,
+    {
+        headers: {
+            Cookie: cookieHeader
+        }
+    }
+);
+
+expect(apiResponse.status()).toBe(200);
+
+const apiData = await apiResponse.json();
+
+expect(apiData).toHaveProperty('data');
+expect(Array.isArray(apiData.data)).toBe(true);
+
+
 
     await employeePage.openEmployeeList();
 
