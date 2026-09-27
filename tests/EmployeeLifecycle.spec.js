@@ -48,5 +48,5 @@ await employeePage.openEmployeeList();
 await employeePage.searchEmployee(`${firstName} ${updatedLastName}`);
 
 
-await employeePage.deleteEmployee(firstName);
+//await employeePage.deleteEmployee(firstName);
 });
