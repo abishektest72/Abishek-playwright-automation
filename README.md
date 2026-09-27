@@ -14,7 +14,7 @@ The framework demonstrates:
 - Playwright HTML reporting
 - Screenshots and test artifacts
 - CI/CD integration using GitHub Actions
-- API-level verification
+- API-level response validation
 
 ---
 
@@ -53,9 +53,12 @@ OrangeHrm/
 │   └── workflows/
 │       └── playwright.yml
 │
-├── .env
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
 ├── playwright.config.js
 └── README.md
+
+### Test Execution Note
+
+The employee delete step is currently skipped in the lifecycle test because the public OrangeHRM demo environment did not consistently return the newly created employee in the employee list during deletion. The delete implementation remains available in `EmployeePage.js` for future stabilization.
