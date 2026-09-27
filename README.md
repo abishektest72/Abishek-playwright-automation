@@ -62,3 +62,21 @@ OrangeHrm/
 ### Test Execution Note
 
 The employee delete step is currently skipped in the lifecycle test because the public OrangeHRM demo environment did not consistently return the newly created employee in the employee list during deletion. The delete implementation remains available in `EmployeePage.js` for future stabilization.
+
+## Performance Testing with k6
+
+Basic k6 performance testing is included under the `performance/` directory.
+
+### Performance Tests
+
+- `performance/login.js` - Login API performance test
+- `performance/employee-create.js` - Employee API performance test template
+- `performance/login-results.txt` - Sample login performance execution
+- `performance/employee-create-results.txt` - Sample employee API execution
+
+### Run Performance Tests
+
+```bash
+k6 run performance/login.js
+k6 run performance/employee-create.js
+
